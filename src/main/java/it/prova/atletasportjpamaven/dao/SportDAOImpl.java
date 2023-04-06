@@ -50,7 +50,7 @@ public class SportDAOImpl implements SportDAO {
 	
 	@Override
 	public Sport findByDescrizione(String descrizione) throws Exception {
-		TypedQuery<Sport> query = entityManager.createQuery("select s from Sport where s.descrizione =?1", Sport.class).setParameter(1, descrizione);
+		TypedQuery<Sport> query = entityManager.createQuery("select s from Sport s where s.descrizione =?1", Sport.class).setParameter(1, descrizione);
 		return query.getResultStream().findFirst().orElse(null);
 	}
 

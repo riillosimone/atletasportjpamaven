@@ -5,12 +5,12 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
         version="2.2">
 	<persistence-unit name="manytomanyjpa_unit" transaction-type="RESOURCE_LOCAL">
-		<class>it.manytomanyjpamaven.model.Atleta</class>
-		<class>it.manytomanyjpamaven.model.Sport</class>
+		<class>it.prova.atletasportjpamaven.model.Atleta</class>
+		<class>it.prova.atletasportjpamaven.model.Sport</class>
 		<properties>
 			<!-- setup con MySql -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/proprietariojpa?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/atletasportjpamaven?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="root"/>
 			
@@ -31,7 +31,7 @@
 			
 			<property name="hibernate.show_sql" value="true"/>
 			<!-- create-drop,create,update,validate -->
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value=""/>
 		</properties>
 	</persistence-unit>
 </persistence>
