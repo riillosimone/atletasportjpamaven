@@ -157,4 +157,21 @@ public class SportServiceImpl implements SportService {
 		}
 	}
 
+	@Override
+	public List<Sport> cercaErrori() throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			// injection
+			sportDAO.setEntityManager(entityManager);
+
+			// esecuzione metodo
+			return sportDAO.findMistakes();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
 }

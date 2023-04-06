@@ -50,7 +50,7 @@ public class AtletaServiceImpl implements AtletaService {
 			atletaDao.setEntityManager(entityManager);
 
 			// esecuzione metodo
-			return atletaDao.get(id);
+			return atletaDao.findByIdFetchingSports(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -178,6 +178,23 @@ public class AtletaServiceImpl implements AtletaService {
 			EntityManagerUtil.closeEntityManager(entityManager);
 		}
 
+	}
+
+	@Override
+	public Long sommaMedaglieVinteInSportChiusi() throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			// injection
+			atletaDao.setEntityManager(entityManager);
+
+			// esecuzione metodo
+			return atletaDao.sumNumeroMedaglieVinteInSportChiusi();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
 	}
 
 }

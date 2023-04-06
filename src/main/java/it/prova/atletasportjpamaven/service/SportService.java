@@ -19,7 +19,9 @@ public interface SportService {
 	public void rimuovi(Long idSportToRemove) throws Exception;
 
 	public Sport cercaPerDescrizione(String descrizione) throws Exception;
-
+	
+	public List<Sport> cercaErrori() throws Exception;
+ 
 	// per injection
 	public void setAtletaDAO(AtletaDAO atletaDAO);
 

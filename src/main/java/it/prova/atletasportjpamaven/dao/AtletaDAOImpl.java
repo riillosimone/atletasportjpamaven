@@ -3,6 +3,8 @@ package it.prova.atletasportjpamaven.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import it.prova.atletasportjpamaven.model.Atleta;
 
@@ -47,6 +49,21 @@ public class AtletaDAOImpl implements AtletaDAO {
 			throw new Exception("Problema valore input");
 		entityManager.remove(entityManager.merge(atletaInstance));
 
+	}
+
+	@Override
+	public Atleta findByIdFetchingSports(Long id) {
+		TypedQuery<Atleta> query = entityManager.createQuery("select a from Atleta a left join fetch a.sports s where a.id = :idAtleta", Atleta.class);
+		query.setParameter("idAtleta", id);
+		return query.getResultList().stream().findFirst().orElse(null);
+	}
+
+	@Override
+	public Long sumNumeroMedaglieVinteInSportChiusi() {
+		Long somma = null;
+		Query query = entityManager.createQuery("select sum(a.numeroMedaglieVinte) from Atleta a join a.sports s where s.dataFine is not null");
+		somma = (Long) query.getSingleResult();
+		return somma;
 	}
 
 }

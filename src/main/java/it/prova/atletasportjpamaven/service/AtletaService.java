@@ -20,6 +20,8 @@ public interface AtletaService {
 	public void rimuovi(Long idAtleta) throws Exception;
 
 	public void aggiungiSport(Atleta atletaEsistente, Sport sportInstance) throws Exception;
+	
+	public Long sommaMedaglieVinteInSportChiusi () throws Exception;
 
 	// per injection
 	public void setAtletaDAO(AtletaDAO atletaDAO);
