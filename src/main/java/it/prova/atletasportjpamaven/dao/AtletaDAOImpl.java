@@ -66,4 +66,11 @@ public class AtletaDAOImpl implements AtletaDAO {
 		return somma;
 	}
 
+	@Override
+	public List<Atleta> findByDescrizioneSport(String descrizione) {
+		TypedQuery<Atleta> query = entityManager.createQuery("select a from Atleta a left join fetch a.sports s where s.descrizione = :descrizione", Atleta.class);
+		query.setParameter("descrizione", descrizione);
+		return query.getResultList();
+	}
+
 }

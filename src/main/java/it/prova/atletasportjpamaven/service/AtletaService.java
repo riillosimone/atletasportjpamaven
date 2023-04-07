@@ -21,7 +21,11 @@ public interface AtletaService {
 
 	public void aggiungiSport(Atleta atletaEsistente, Sport sportInstance) throws Exception;
 	
+	public void rimuoviSport(Atleta atletaEsistente, Sport sportInstance) throws Exception;
+	
 	public Long sommaMedaglieVinteInSportChiusi () throws Exception;
+	
+	public List<Atleta> listaAtletiAppartenentiAUnoSport (String descrizione) throws Exception;
 
 	// per injection
 	public void setAtletaDAO(AtletaDAO atletaDAO);
